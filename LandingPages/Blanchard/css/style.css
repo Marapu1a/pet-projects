@@ -1,0 +1,491 @@
+html {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+*,
+::before,
+::after {
+    box-sizing: inherit;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    border: none;
+}
+
+.container {
+    margin: 0 auto;
+    width: 1920px;
+    padding: 0 160px;
+}
+
+.flex {
+    display: flex;
+}
+
+.list-reset {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+:root {
+    --first-black: #000000;
+    --second-black: #333333;
+    --third-black: #666666;
+    --fourth-black: #999999;
+    --bright-violet: #D1A9F0;
+    --light-violet: #C283F3;
+    --violet: #9D5CD0;
+    --dark-violet: #7943A4;
+    --green: #30BF39;
+    --blue: #26A5E4;
+    --red: #D11616;
+    --dark-grey: #CACACA;
+    --grey: #ECECEC;
+    --white: #FFFFFF;
+}
+
+
+
+/*HEADER*/
+.header {
+    background-color: var(--first-black);
+}
+
+.header__list {
+    padding-top: 30px;
+    padding-bottom: 27px;
+    justify-content: space-between;
+}
+
+.header__list-item:not(:first-child) {
+    margin-top: 7px;
+}
+
+.header__nav-list {
+    margin-right: 21px;
+    align-items: center;
+}
+
+.header__nav-list-item {
+    padding-right: 96px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 25px;
+    color: var(--white);
+}
+
+
+
+/*HERO*/
+.hero {
+    background: var(--first-black);
+}
+
+.hero--background {
+    background-image: url(../img/hero_background.png);
+}
+
+.hero__title {
+    width: 50%;
+    margin: 0;
+    padding-top: 145px;
+    color: var(--white);
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 68px;
+}
+
+.hero__description {
+    width: 34%;
+    padding-top: 2px;
+    color: var(--white);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 30px;
+}
+
+.hero__btn {
+    margin-top: 74px;
+    margin-bottom: 146px;
+    padding: 22.5px 35px;
+    border-radius: 100px;
+    color: var(--white);
+    background-color: var(--violet);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 25px;
+}
+
+
+
+/*ABOUT-US*/
+.about-us {
+    margin-top: 81px;
+    padding-bottom: 14px;
+}
+
+.about-us__title {
+    margin-bottom: 0;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 65px;
+}
+
+.about-us__description {
+    width: 66%;
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 32px;
+}
+
+
+
+/*GALLERY*/
+.gallery {
+    margin-top: 40px;
+    background-color: var(--first-black);
+}
+
+.gallery--background {
+    padding-bottom: 76px;
+    background-image: url(../img/gallery_background.png);
+}
+
+.gallery__title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-top: 80px;
+    color: var(--white);
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 65px;
+}
+
+.gallery__list {
+    justify-content: space-between;
+}
+
+.gallery__list-flex {
+    padding-bottom: 4px;
+    display: flex;
+    align-self: flex-end;
+    flex-direction: column;
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 32px;
+}
+
+.gallery__list-item__picture {
+    padding-left: 50px;
+}
+
+.gallery__checkbox {
+    user-select: none;
+    cursor: pointer;
+}
+
+.gallery__checkbox-input {
+    position: absolute;
+    appearance: none;
+}
+
+.gallery__checkbox-text {
+    position: relative;
+    padding-left: 24px;
+}
+
+.gallery__checkbox-text::before {
+    content: "";
+    position: absolute;
+    left: -1px;
+    top: 51%;
+    width: 14px;
+    height: 14px;
+    border: 1px solid var(--white);
+    transform: translateY(-50%);
+}
+
+.gallery__checkbox-text::after {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 51%;
+    width: 1px;
+    height: 1px;
+    border: 3px solid var(--white);
+    border-radius: 100%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.gallery__checkbox-input:checked + .gallery__checkbox-text::after {
+    opacity: 1;
+}
+
+.gallery__checkbox-input:focus + .gallery__checkbox-text {
+    color: var(--light-violet);
+}
+
+
+
+/*CATALOG*/
+.catalog {
+    margin-top: 80px;
+}
+
+.catalog__title {
+    margin: 0;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 65px;
+}
+
+.catalog__description {
+    width: 68%;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 32px;
+}
+
+.catalog__artists-list {
+    margin-top: 38px;
+}
+
+.catalog__artists-list-item {
+    padding-bottom: 47px;
+    align-items: center;
+}
+
+.catalog__artists-description {
+    margin-left: 50px;
+}
+
+.catalog__artists-title {
+    margin: 0;
+    margin-top: 16px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 33px;
+}
+
+.catalog__artists-date {
+    margin: 0;
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: var(--fourth-black);
+}
+
+.catalog__artists-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 32px;
+}
+
+
+
+/*EVENTS*/
+.events {
+    margin-top: 31px;
+}
+
+.events__title {
+    margin: 0;
+    margin-bottom: 15px;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 65px;
+}
+
+.events__list-item {
+    flex-direction: column;
+    flex-basis: 33%;
+    margin-right: 50px;
+    outline: 1px solid var(--dark-grey);
+}
+
+.events__figcaption {
+    width: 40%;
+    margin: 0;
+    padding-top: 10px;
+    padding-left: 50px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    color: var(--fourth-black);
+}
+
+.events__description-title {
+    width: 78%;
+    margin: 0;
+    padding-top: 13px;
+    padding-left: 50px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 33px;
+}
+
+.events__description-text {
+    width: 90%;
+    margin: 0;
+    padding-top: 10px;
+    padding-left: 50px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 32px;
+}
+
+.events__link-container {
+    margin-top: auto;
+    padding-top: 71px;
+    padding-bottom: 46px;
+    margin-left: 50px;
+}
+
+
+
+/*PROJECTS*/
+.projects {
+    margin-top: 81px;
+}
+
+.projects__title {
+    margin: 0;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 65px;
+}
+
+.projects__description {
+    width: 67%;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 32px;
+}
+
+.projects__partners-title {
+    margin: 0;
+    margin-top: 30px;
+    margin-bottom: 16px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+}
+
+.projects__partners-list {
+    gap: 34px;
+}
+
+
+
+/*CONTACTS*/
+.contacts {
+    margin-top: 77px;
+    padding-bottom: 34px;
+    border-top: 1px solid var(--dark-grey);
+}
+
+.contacts__list {
+    align-items: center;
+}
+
+.contacts__list-item-title {
+    margin: 0;
+    margin-top: 34px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+}
+
+.contacts__list-item-adress {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 32px;
+}
+
+.contacts__list-item-form {
+    margin-left: 81px;
+}
+
+.contacts__list-item-form-input {
+    margin-top: 34px;
+    margin-right: 20px;
+    padding: 8px 61px 8px 22px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 32px;
+    border-radius: 100px;
+    border-color: var(--second-black);
+}
+
+.contacts__list-item-form-input::placeholder {
+    color: var(--fourth-black);
+}
+
+.contacts__list-item-form-btn {
+    margin-top: 34px;
+    padding-right: 31px;
+    padding-left: 33px;
+    color: var(--violet);
+    background-color: var(--white);
+    border: 2px solid var(--violet);
+    border-radius: 100px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 25px;
+}
+
+.contacts--disappearing {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 25px;
+}
+
+.contacts__list-item-sm-title {
+    margin: 0;
+    margin-top: 37px;
+    margin-left: 78px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+}
+
+.contacts__list-item-sm {
+    margin-top: 6px;
+    margin-left: 79px;
+}
+
+.contacts__list-item-sm-link {
+    margin-right: 15px;
+}
+
+
+
+/*FOOTER*/
+.footer {
+    background-color: var(--first-black);
+}
+
+.footer__list {
+    padding: 48px 79px 40px 160px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer__list-item-link {
+    padding-right: 16px;
+}
