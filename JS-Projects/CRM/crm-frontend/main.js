@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const addClientToServer = async client => {     //Загружаем обьект клиента на сервер
-        const clientData = await fetch('http://localhost:3000/api/clients', {
+        const clientData = await fetch('/api/clients', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
             addClientToTable(result);
         } else {
             // Обновляем существующего клиента
-            await fetch(`http://localhost:3000/api/clients/${editingClientId}`, {
+            await fetch(`/api/clients/${editingClientId}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
@@ -281,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const tableRender = () => {
-        const data = fetch('http://localhost:3000/api/clients')
+        const data = fetch('/api/clients')
             .then(res => res.json())
             .then(res => res.map(item => addClientToTable(item)))
 
@@ -298,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (conf) {
                 const clientId = e.target.dataset.id;
 
-                await fetch(`http://localhost:3000/api/clients/${clientId}`, {
+                await fetch(`/api/clients/${clientId}`, {
                     method: 'DELETE',
                 })
 
@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const clientId = e.target.getAttribute('data-id');
 
             // Загружаем данные клиента
-            const response = await fetch(`http://localhost:3000/api/clients/${clientId}`);
+            const response = await fetch(`/api/clients/${clientId}`);
             const clientData = await response.json();
 
             // Заполняем поля модалки
@@ -466,12 +466,12 @@ document.addEventListener('DOMContentLoaded', () => {
         searchTimeout = setTimeout(async () => {
             // Если поле поиска пустое, загружаем все данные
             if (query === '') {
-                const response = await fetch('http://localhost:3000/api/clients');
+                const response = await fetch('/api/clients');
                 const data = await response.json();
                 updateTableWithClients(data); // Рендерим всех клиентов
             } else {
             // Делаем запрос к API с введённым поисковым запросом
-                const response = await fetch(`http://localhost:3000/api/clients?search=${encodeURIComponent(query)}`);
+                const response = await fetch(`/api/clients?search=${encodeURIComponent(query)}`);
                 const data = await response.json();
                 updateTableWithClients(data); // Рендерим найденных клиентов
             }
