@@ -1,8 +1,16 @@
-# React + Vite
+# Lol Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Описание
+Проект для поиска информации о суммонерах и их последних матчах с использованием Riot Games API. 
+Пользователь вводит никнейм, выбирает регион и получает PUUID игрока, который используется для запроса истории последних матчей.
 
-Currently, two official plugins are available:
+## Технологии
+- Vite
+- React
+- Express (для прокси-сервера)
+- Riot Games API
+- Axios
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Функционал
+- Получение PUUID по никнейму и региону.
+- Отображение 5 последних матчей игрока.
