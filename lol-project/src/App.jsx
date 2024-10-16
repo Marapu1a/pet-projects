@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import SummonerSearch from './components/SummonerSearch';
+import MatchHistory from './components/MatchHistory';
 
 const App = () => {
   const [puuid, setPuuid] = useState(null);
@@ -16,7 +17,7 @@ const App = () => {
       {/* Если PUUID найден, отображаем его */}
       {puuid && (
         <div>
-          <h2>PUUID: {puuid}</h2>
+          <MatchHistory puuid={puuid} />
         </div>
       )}
     </div>

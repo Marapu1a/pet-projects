@@ -1,6 +1,6 @@
 import express from 'express';
 import axios from 'axios';
-import config from '../config';
+import config from '../config.js';
 
 const app = express();
 const port = config.port;
@@ -25,19 +25,15 @@ const getRegionByTagLine = (tagLine) => {
 };
 
 // Универсальный обработчик для всех запросов Riot API
-app.get('/riot/:tagLine/*', async (req, res) => {
+app.get('/rito/:tagLine/*', async (req, res) => {
   const { tagLine } = req.params; // Извлекаем tagLine (например, EUW1)
   const riotPath = req.params[0]; // Извлекаем оставшуюся часть пути после /riot/:tagLine/
   const region = getRegionByTagLine(tagLine); // Определяем регион по tagLine
   const apiKey = config.API_KEY; // Riot API ключ
 
-  console.log(`Получен запрос: ${req.originalUrl}`);
-  console.log(`tagLine: ${tagLine}, riotPath: ${riotPath}`);
-  console.log(`Регион: ${region}`);
-
   try {
     // Формируем финальный URL для запроса к Riot API
-    const riotApiUrl = `https://${region}.api.riotgames.com/riot/${riotPath}`;
+    const riotApiUrl = `https://${region}.api.riotgames.com/${riotPath}`;
     console.log(`URL запроса к Riot API: ${riotApiUrl}`); // Логируем URL для проверки
 
     // Отправляем запрос к Riot API

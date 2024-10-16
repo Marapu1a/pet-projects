@@ -16,7 +16,6 @@ const SummonerSearch = ({ onSummonerFound }) => {
 
     getSummonerPUUID(gameName, tagLine) // Убираем лишний параметр
       .then(response => {
-        console.log('Получен ответ:', response);
         const puuid = response.puuid;
         onSummonerFound(puuid); // Передаем PUUID в родительский компонент
       })
