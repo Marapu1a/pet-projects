@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { getSummonerPUUID } from '../api/riotApi';
 
+// eslint-disable-next-line react/prop-types
 const SummonerSearch = ({ onSummonerFound }) => {
   const [gameName, setGameName] = useState('');
   const [tagLine, setTagLine] = useState('EUW1'); // По умолчанию EUW1
