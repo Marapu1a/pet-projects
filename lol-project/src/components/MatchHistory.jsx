@@ -1,35 +1,46 @@
-import { useEffect, useState } from "react";
-import { getMatchHistory } from "../api/riotApi";
+import { useEffect, useState } from 'react';
+import { getMatchHistory } from '../api/riotApi';
 
 // eslint-disable-next-line react/prop-types
 const MatchHistory = ({ puuid }) => {
-    // Создаём состояние для хранения истории матчей
-    const [matches, setMatches] = useState([]);
+  const [matches, setMatches] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    // Выполняем запрос к API, как только компонент смонтирован
-    useEffect(() => {
-        // Запрашиваем историю матчей и обновляем состояние
-        getMatchHistory(puuid)
-            .then(data => {
-                setMatches(data); // Сохраняем данные в состоянии
-            })
-            .catch(error => {
-                console.error("Ошибка при загрузке матчей:", error);
-            });
-    }, [puuid]); // Зависимость: если puuid изменится, запрос выполнится заново
+  useEffect(() => {
+    if (puuid) {
+      getMatchHistory(puuid)
+        .then(data => {
+          setMatches(data);
+          setLoading(false);
+          setError(null);
+        })
+        .catch(err => {
+          console.error('Ошибка при загрузке матчей:', err);
+          setError('Не удалось загрузить матчи.');
+          setLoading(false);
+        });
+    }
+  }, [puuid]);
 
-    // Рендерим список матчей
-    return (
-        <ul>
-            {matches.length > 0 ? (
-                matches.map((matchId, index) => (
-                    <li key={index}>{matchId}</li> // Рендерим каждый матч
-                ))
-            ) : (
-                <li>Загрузка матчей...</li> // Если матчей нет или они загружаются
-            )}
-        </ul>
-    );
+  if (loading) return <p>Загрузка матчей...</p>;
+  if (error) return <p>{error}</p>;
+
+  return (
+    <ul>
+      {matches.length > 0 ? (
+        matches.map((matchId) => (
+          <li key={matchId}>
+            <a href={`/match/${matchId}`} target="_blank" rel="noopener noreferrer">
+              Открыть статистику матча {matchId}
+            </a>
+          </li>
+        ))
+      ) : (
+        <p>Матчи не найдены</p>
+      )}
+    </ul>
+  );
 };
 
 export default MatchHistory;

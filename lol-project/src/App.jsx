@@ -1,6 +1,8 @@
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
 import SummonerSearch from './components/SummonerSearch';
 import MatchHistory from './components/MatchHistory';
+import MatchDetails from './components/MatchDetails';
 
 const App = () => {
   const [puuid, setPuuid] = useState(null);
@@ -10,17 +12,20 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1>League of Legends Match History</h1>
-      <SummonerSearch onSummonerFound={handleSummonerFound} />
-
-      {/* Если PUUID найден, отображаем его */}
-      {puuid && (
-        <div>
-          <MatchHistory puuid={puuid} />
-        </div>
-      )}
-    </div>
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div>
+              <SummonerSearch onSummonerFound={handleSummonerFound} />
+              {puuid && <MatchHistory puuid={puuid} />}
+            </div>
+          }
+        />
+        <Route path="/match/:matchId" element={<MatchDetails />} />
+      </Routes>
+    </Router>
   );
 };
 

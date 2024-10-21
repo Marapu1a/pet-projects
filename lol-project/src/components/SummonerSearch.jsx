@@ -4,7 +4,8 @@ import { getSummonerPUUID } from '../api/riotApi';
 // eslint-disable-next-line react/prop-types
 const SummonerSearch = ({ onSummonerFound }) => {
   const [gameName, setGameName] = useState('');
-  const [tagLine, setTagLine] = useState('EUW1'); // По умолчанию EUW1
+  const [tagLine, setTagLine] = useState('EUW1');
+  const [error, setError] = useState(null);
 
   const handleSearch = () => {
     if (!gameName) {
@@ -14,18 +15,22 @@ const SummonerSearch = ({ onSummonerFound }) => {
 
     console.log(`Поиск суммонера: ${gameName} на сервере ${tagLine}`);
 
-    getSummonerPUUID(gameName, tagLine) // Убираем лишний параметр
+    getSummonerPUUID(gameName, tagLine)
       .then(response => {
         const puuid = response.puuid;
-        onSummonerFound(puuid); // Передаем PUUID в родительский компонент
+        onSummonerFound(puuid);  // Передаем PUUID в родительский компонент
+        setError(null);
       })
       .catch(error => {
-        console.error('Ошибка при поиске PUUID:', error);
+        console.error('Ошибка при запросе:', error);
+        setError('Не удалось получить информацию. Попробуйте снова.');
       });
   };
 
   return (
     <div>
+      <h1>League of Legends Match History</h1>
+
       <input
         type="text"
         value={gameName}
@@ -45,7 +50,9 @@ const SummonerSearch = ({ onSummonerFound }) => {
         <option value="LA1">Latin America North (LA1)</option>
         <option value="LA2">Latin America South (LA2)</option>
       </select>
-      <button onClick={handleSearch}>Search</button>
+      <button type="button" onClick={handleSearch}>Search</button>
+
+      {error && <p>{error}</p>}
     </div>
   );
 };
