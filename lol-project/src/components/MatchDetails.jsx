@@ -2,9 +2,8 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMatchDetails } from '../api/riotApi';
 
-// eslint-disable-next-line react/prop-types
-const MatchDetails = ({ puuid }) => {
-    const { matchId } = useParams(); // Получаем ID матча из URL
+const MatchDetails = () => {
+    const { matchId, puuid } = useParams(); // Получаем matchId и puuid из URL
     const [matchData, setMatchData] = useState(null);
     const [error, setError] = useState(null);
 

@@ -31,7 +31,7 @@ const MatchHistory = ({ puuid }) => {
       {matches.length > 0 ? (
         matches.map((matchId) => (
           <li key={matchId}>
-            <a href={`/match/${matchId}`} target="_blank" rel="noopener noreferrer">
+            <a href={`/match/${matchId}/${puuid}`} target="_blank" rel="noopener noreferrer">
               Открыть статистику матча {matchId}
             </a>
           </li>
