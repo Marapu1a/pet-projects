@@ -23,7 +23,12 @@ const App = () => {
             </div>
           }
         />
-        <Route path="/match/:matchId" element={<MatchDetails />} />
+        <Route
+          path="/match/:matchId"
+          element={
+            <MatchDetails puuid={'09iPiKG63rKuloRwcEX1oM78rJF51Ybj9cwBFMMlXvxtFpePKKjxHrY2lkRyRR2DVTJIJFHLdvVoLQ'} />
+          }
+        />
       </Routes>
     </Router>
   );
